@@ -5,12 +5,10 @@
 * Unzip the data from: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip to the same working directory as the "run_analysis.R" script.
 * Open and run the "run_analysis.R" file in RStudio.
 
-##This describes how "run_analysis.R"" works
+##This describes how "run_analysis.R" works
 
-Data source: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-Data for the project: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
-
-###Description of the run_analysis.R program:
+* Data source: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+* Data for the project: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 * Read X_train.txt from the train folder and store as data.train. Read X_test.txt from the test folder and store as data.test. Merge these to create data.merged.
 * Read y_train.txt from the train folder and store as label.train. Read y_test.txt fomr the test folder and store as label.test. Merge these to create label.merged.
 * Read subject_train.text from the train folder and store as subject.train. Read subject_test.txt from the test folder and store as subject.test. Merge these to create subject.merged.

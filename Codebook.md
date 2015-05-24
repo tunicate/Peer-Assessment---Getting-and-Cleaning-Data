@@ -1,6 +1,6 @@
 # Peer-Assessment---Getting-and-Cleaning-Data
 
-##This describes the variables in the data set produced by "run_analysis.R".
+##This describes the variables in the data set produced by "run_analysis.R"
 
 The data set includes data for 30 unique subjects: numbered 1-30 in the "subject" column.
 
