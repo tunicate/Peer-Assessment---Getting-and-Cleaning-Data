@@ -1,4 +1,4 @@
-setwd("~/My R Files/Coursera")
+setwd("~/My R Files/Coursera/3 - Getting and Cleaning Data")
 
 # Step 1: Merge training and test data sets
 
@@ -36,9 +36,8 @@ dim(data.final)
 # data.final is 10299 by 66
 
 names(data.final) <- gsub("\\(\\)", "", data.features[data.meansd, 2])
-names(data.final) <- gsub("mean", "Mean", names(data.final))
-names(data.final) <- gsub("std", "Std", names(data.final))
-names(data.final) <- gsub("-", "", names(data.final)) 
+names(data.final) <- gsub("-", "", names(data.final))
+names(data.final) <- tolower(names(data.final))
 
 # Step 3: Give the activities descriptive names
 
@@ -65,16 +64,16 @@ length.column <- dim(data.clean)[2]
 data.tidy <- matrix(NA, nrow=length.subject*length.activity, ncol=length.column) 
 data.tidy <- as.data.frame(data.tidy)
 colnames(data.tidy) <- colnames(data.clean)
-row <- 1
-for(i in 1:length.subject) {
-        for(j in 1:length.activity) {
-                data.tidy[row, 1] <- sort(unique(subject.merged)[, 1])[i]
-                data.tidy[row, 2] <- label.activity[j, 2]
-                bool1 <- i == data.clean$subject
-                bool2 <- label.activity[j, 2] == data.clean$activity
-                data.tidy[row, 3:length.column] <- colMeans(data.clean[bool1&bool2, 3:length.column])
-                row <- row + 1
+populate <- 1
+        for(i in 1:length.subject) {
+                for(j in 1:length.activity) {
+                        data.tidy[populate, 1] <- sort(unique(subject.merged)[, 1])[i]
+                        data.tidy[populate, 2] <- label.activity[j, 2]
+                        a <- i == data.clean$subject
+                        b <- label.activity[j, 2] == data.clean$activity
+                        data.tidy[populate, 3:length.column] <- colMeans(data.clean[a&b, 3:length.column])
+                        populate <- populate + 1
+                }
         }
-}
 
 write.table(data.tidy, "avgbyactivitybysubject.txt",row.name=FALSE)
